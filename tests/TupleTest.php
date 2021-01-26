@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Spatie\Typed\Tests;
 
+use Spatie\Typed\Exceptions\UninitialisedError;
+use Spatie\Typed\Exceptions\WrongType;
 use Spatie\Typed\T;
-use Spatie\Typed\Tuple;
 use Spatie\Typed\Tests\Extra\Post;
-use Spatie\Typed\Types\StringType;
 use Spatie\Typed\Tests\Extra\Wrong;
+use Spatie\Typed\Tuple;
 use Spatie\Typed\Types\BooleanType;
 use Spatie\Typed\Types\IntegerType;
-use Spatie\Typed\Exceptions\WrongType;
-use Spatie\Typed\Exceptions\UninitialisedError;
+use Spatie\Typed\Types\StringType;
 
 class TupleTest extends TestCase
 {
@@ -25,7 +25,7 @@ class TupleTest extends TestCase
             new BooleanType())
         )->set(1, 'a', true);
 
-        $this->assertInternalType('array', $data->toArray());
+        $this->assertIsArray($data->toArray());
     }
 
     /** @test */
